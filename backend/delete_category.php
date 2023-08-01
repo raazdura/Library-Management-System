@@ -6,18 +6,17 @@
     else {
         echo 'successfully connected';
 
-        $sid = $_POST['sid'];
-        $isbn = $_POST['isbn'];
-        $date = date("Y-m-d");
-        echo $date;
+        $id = $_GET['id'];
+        echo $id;
 
-        $sql = "INSERT INTO issue (student_id, isbn, date) VALUES ('$sid', '$isbn', '$date')";
+        $sql = "DELETE FROM category WHERE id = $id";
 
         if(mysqli_query($conn,$sql))
         {
-            echo "Data inserted successfully";
-            header("location: ../admin/issue.php");
+            echo "Data deleted successfully successfully";
+            header("location: ../admin/category.php");
         }
+
         else
         {
             echo "Error on insert ". mysqli_error($con);

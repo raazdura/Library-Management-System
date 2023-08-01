@@ -75,6 +75,8 @@
 
 
 
+
+
 .home-section {
   position: relative;
   background: #f5f5f5;
@@ -153,6 +155,7 @@ nav .search-box .bx-search{
   height: 50px;
   min-width: 190px;
   padding: 0 15px 0 2px;
+  cursor: pointer;
 }
 nav .profile-details img{
   height: 40px;
@@ -171,6 +174,55 @@ nav .profile-details i{
   font-size: 25px;
   color: #333;
 }
+/* Drop-Down User Profile */
+.home-section nav .drop-down {
+  margin: auto;
+  width: 250px;
+  background-color: white;
+  position: absolute;
+  top: 100%;
+  right: 10px;
+  z-index: 2;
+  border-radius:3px;
+  color: black;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.3s;
+}
+.home-section nav .drop-down.open-dropdown {
+  max-height: 400px;
+}
+.home-section nav .drop-down .menu-container {
+  margin: 10px;
+}
+.home-section nav .drop-down .menu-container .profile {
+  display: flex;
+  align-items: center;
+  border-bottom: 3px solid #e5e5e5;
+  border-radius: 3px;
+  padding-bottom: 10px;
+}
+.home-section nav .drop-down .menu-container .profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.home-section nav .drop-down .menu-container ul li {
+  padding: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.home-section nav .drop-down .menu-container ul li:hover {
+  font-weight: 500;
+}
+.home-section nav .drop-down .menu-container ul li i {
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+}
+
 .home-section .home-content{
   position: relative;
   padding-top: 104px;
@@ -541,7 +593,7 @@ th, td {
   border: 0.5px solid #D3D3D3 ;
   cursor: pointer;
 }
-.pagination ul li:nth-child(2) {
+.pagination ul .page-number {
   border: 0.5px solid #D3D3D3 ;
   padding: 0 10px;
   border-left: none;
@@ -549,6 +601,10 @@ th, td {
   cursor: default;
   background: blueviolet;
 }
+.pagination ul li a {
+  text-decoration: none;
+}
+
 
 
 /* Popup container */
@@ -596,6 +652,14 @@ padding: 0 10px;
 .grid-item {
 margin-bottom: 10px;
 }
+.form-container .grid-container .isbn-container .enter-isbn {
+  display: grid;
+  grid-template-columns: 20% auto;
+  padding: 0 10px;
+  }
+  .grid-item {
+  margin-bottom: 10px;
+  }
 .form-container .grid-container label {
 text-align: right;
 padding: 10px 0;

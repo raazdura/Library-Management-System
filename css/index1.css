@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Poppins', sans-serif;
+}
+header {
+    background-color: #f5f5f5;
+}
+.navbar{
+margin: auto;
+max-width: 80%;
+display: flex;
+justify-content: space-between;
+color: white;
+
+}
+.navbar .logo-details{
+height: 80px;
+display: flex;
+align-items: center;
+width: 200px;
+font-weight: 600;
+}
+.navbar .logo-details i{
+font-size: 28px;
+color: #5C1C97;
+min-width: 60px;
+text-align: center;
+}
+.navbar .logo-details .logo_name{
+color: #5C1C97;
+font-size: 24px;
+}
+.navbar .nav-links{
+margin-top: 10px;
+display: flex;
+align-items: center;
+}
+.navbar .nav-links li {
+    list-style: none;
+    margin: 0 5px;
+}
+.navbar .nav-links li a {
+    text-decoration: none;
+    color: #5C1C97;
+    font-weight: 600;
+}
+.navbar .nav-links li a:hover, .navbar .nav-links li a:active{
+    border-bottom: 2px solid #5C1C97;
+}
+.navbar .nav-links li button {
+    background-color: #5C1C97;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.bg-img {
+    position: relative;
+    background-image: url("../img/lib-img.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+}
+.bg-img img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: 30% 30%;
+}
+.bg-img .search-container {
+    width: 600px;
+    /* background-color: rgb(0, 71, 171, 0.6); */
+    margin: auto;
+    padding: 10px 30px;
+    border-radius: 10px;
+}
+.bg-img .search-container h2 {
+    color: white;
+    text-align: center;
+}
+.bg-img .search-container form {
+    width: 100%;
+    margin: auto;
+}
+.bg-img .search-container form input {
+    margin: 5px 0;
+    padding-left: 10px;
+    width: 90%;
+    height: 50px;
+    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.bg-img .search-container form button {
+    margin: 5px 0;
+    width: 10%;
+    height: 50px;
+    float: right;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgb(92, 28, 151);
+}
+.bg-img .search-container form button i {
+    color: white;
+    font-size: 30px;
+}
+
+.home-section {
+    position: relative;
+    background-color: #f5f5f5;
+    height: 100px;
+    margin-top: 0px;
+}
+.home-section .home-content {
+    position: absolute;
+    top: -40px;
+    left: 15%;
+    margin: auto;
+    width: 70%;
+    background-color: white;
+    border-radius: 5px;
+}
+.user-container {
+    text-align: center;
+    padding: 5px 70px 10px 70px;
+    border-bottom: 1px solid #E5E4E2;
+}
+.user {
+    display: flex;
+    justify-content: space-between;
+}
+.user a {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    height: 50px;
+    width: 32.5%;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.user .librarian{
+    background-color: #D70040;
+}
+.user .teacher {
+    background-color: 	#228B22;
+}
+.user .student {
+    background-color: #0047AB;
+}
+.user a i {
+    font-size: 24px;
+}
+
+footer {
+    min-height: 105px;
+    background-color: #121212;
+}
+footer .footer--third {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+footer .footer--third div {
+    width: 33%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #8f8c8d;
+    display: block;
+}
+.privacy a {
+    color: #8f8c8d;
+    text-decoration: none;
+}

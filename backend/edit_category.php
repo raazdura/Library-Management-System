@@ -6,18 +6,17 @@
     else {
         echo 'successfully connected';
 
-        $sid = $_POST['sid'];
-        $isbn = $_POST['isbn'];
-        $date = date("Y-m-d");
-        echo $date;
+        $id = intval( $_POST['id'] );
+        $name = $_POST['name'];
 
-        $sql = "INSERT INTO issue (student_id, isbn, date) VALUES ('$sid', '$isbn', '$date')";
+        $sql = "UPDATE category SET name = '$name' WHERE id = $id";
 
         if(mysqli_query($conn,$sql))
         {
             echo "Data inserted successfully";
-            header("location: ../admin/issue.php");
+            header("location: ../admin/category.php");
         }
+
         else
         {
             echo "Error on insert ". mysqli_error($con);

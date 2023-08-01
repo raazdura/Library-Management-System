@@ -1,3 +1,5 @@
+
+
 <?php
     include '../includes/config.php';
     if ($conn->connect_error) {
@@ -7,14 +9,16 @@
         echo 'successfully connected';
  
         $id = $_POST['id'];
-        $isbn = $_POST['isbn'];
+        $quantity = $_POST['quantity'];
         $title = $_POST['title'];
         $category = intval($_POST['category']);
         $author = $_POST['author'];
         $publisher = $_POST['publisher'];
-        $publish_date = date("Y-m-d");
+        $publish_date = $_POST['publish_date'];
 
-        $sql = "UPDATE books SET isbn ='$isbn', title = '$title', category_id = '$category', author ='$author', publisher = '$publisher', publish_date = '$publish_date'
+        echo $category;
+
+        $sql = "UPDATE books SET title = '$title', quantity = '$quantity', category_id = '$category', author ='$author', publisher = '$publisher', publish_date = '$publish_date'
         WHERE id = $id";
 
         if(mysqli_query($conn,$sql))

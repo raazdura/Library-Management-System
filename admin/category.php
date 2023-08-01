@@ -4,49 +4,34 @@
     include 'includes/header.php';
 ?>
 
-<section class="home-section">
-    <nav>
-    <div class="sidebar-button">
-            <i class='bx bx-menu sidebarBtn'></i>
-            <span class="dashboard">Category</span>
-        </div>
-        <div class="search-box">
-            <input type="text" placeholder="Search...">
-            <i class='bx bx-search' ></i>
-        </div>
-        <div class="profile-details">
-            <img src="../img/raaz_dura.jpg" alt="">
-            <span class="admin_name">Raaz Dura</span>
-            <i class='bx bx-chevron-down' ></i>
-        </div>
-    </nav>
+
     <div class="home-content">
       <div class="table-container">
         <div class="new-container">
           <button onclick="openForm()" class="new">+ New</button>
           <div id="myForm" class="form-popup">
-        <form action="../backend/add_category.php" class="form-container" method="POST">
-          <div style="border-bottom: 0.5px solid #D3D3D3; margin-bottom: 10px; padding: 10px;">
-            <h2>Issue Books <button type="button" onclick="closeForm()">X</button></h2>
+            <form action="../backend/add_category.php" class="form-container" method="POST">
+              <div style="border-bottom: 0.5px solid #D3D3D3; margin-bottom: 10px; padding: 10px;">
+                <h2>Issue Books <button type="button" onclick="closeForm()">X</button></h2>
+              </div>
+              <div class="grid-container">
+                <label for="name" class="grid-item">Name</label>
+                <input type="text" placeholder="" name="name"class="grid-item" required>
+              </div>
+              <div style="border-top: 0.5px solid #D3D3D3;">
+                <button type="submit" class="btn save"><i class="fa-regular fa-floppy-disk"></i>Save</button>
+                <button type="button" class="btn cancel" onclick="closeForm()"><i class="fa-solid fa-xmark"></i>Close</button>
+              </div>
+            </form>
           </div>
-          <div class="grid-container">
-            <label for="name" class="grid-item">Name</label>
-            <input type="text" placeholder="" name="name"class="grid-item" required>
-          </div>
-          <div style="border-top: 0.5px solid #D3D3D3;">
-            <button type="submit" class="btn save"><i class="fa-regular fa-floppy-disk"></i>Save</button>
-            <button type="button" class="btn cancel" onclick="closeForm()"><i class="fa-solid fa-xmark"></i>Close</button>
-          </div>
-        </form>
-      </div>
-      </div>
-      <div class="search-container">
-        <form action="" class="search-bar">
-            <label for="search-bar">Search:</label>
-            <input type="text" id="search-bar" placeholder="Search...">
-            <button><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
-      </div>
+        </div>
+        <div class="search-container">
+          <form action="" class="search-bar">
+              <label for="search-bar">Search:</label>
+              <input type="text" id="search-bar" placeholder="Search...">
+              <button><i class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
+        </div>
         <table>
           <tr>
             <th style="width: 50%;">Category</th>
@@ -66,8 +51,33 @@
                   <tr>
                     <td><?php echo $row["name"] ?></td>
                     <td>
-                      <button class="edit"><i class="fa-solid fa-pen-to-square" style="margin-right: 1px;"></i>Edit</button>
-                      <button class="delete"><i class="fa-regular fa-trash-can" style="margin-right: 1px;"></i>Delete</button>
+                      <button class="edit" onclick="openEditForm('<?php echo $row['id'];?>', '<?php echo $row['name'];?>')" >
+                        <i class="fa-solid fa-pen-to-square" style="margin-right: 1px;"></i>
+                        Edit
+                      </button>
+
+                      <div id="editForm" class="form-popup">
+                        <form action="../backend/edit_category.php" class="form-container" method="POST">
+                          <div style="border-bottom: 0.5px solid #D3D3D3; margin-bottom: 10px; padding: 10px;">
+                            <h2>Issue Books <button type="button" onclick="closeEditForm()">X</button></h2>
+                          </div>
+                          <div class="grid-container">
+
+                            <label for="id" class="grid-item" style="display: none;">Category Id</label>
+                            <input type="text" placeholder="" name="id" id="id" class="grid-item" style="display: none;" required>
+
+                            <label for="name" class="grid-item">Name</label>
+                            <input type="text" placeholder="" name="name" id="name" class="grid-item" required>
+                          </div>
+                          <div style="border-top: 0.5px solid #D3D3D3;">
+                            <button type="submit" class="btn save"><i class="fa-regular fa-floppy-disk"></i>Save</button>
+                            <button type="button" class="btn cancel" onclick="closeEditForm()"><i class="fa-solid fa-xmark"></i>Close</button>
+                          </div>
+                        </form>
+                      </div>
+                      <a href="../backend/delete_category.php?id=<?php echo $row['id']?>" onclick="return confirm('Do you want to delete the book ?');">
+                        <button class="delete"><i class="fa-regular fa-trash-can" style="margin-right: 1px;"></i>Delete</button>
+                      </a>
                     </td>
                   </tr>
           <?php
@@ -94,6 +104,7 @@
 </section>
 
 <script>
+    document.getElementById('pannel-title').innerHTML = "Category";
   document.getElementById('category').className= 'active';
   document.getElementById('dashboard').className= '';
 
@@ -104,6 +115,17 @@
   function closeForm() {
     document.getElementById("myForm").style.display = "none";
   }
+
+  function openEditForm(id, name) {
+    document.getElementById("editForm").style.display = "block";
+      
+    document.getElementById("id").value = id;
+    document.getElementById("name").value = name;
+    }
+
+    function closeEditForm() {
+      document.getElementById("editForm").style.display = "none";
+    }
   </script>
 </body>
 </html>

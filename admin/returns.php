@@ -4,22 +4,6 @@
     include 'includes/header.php';
 ?>
 
-<section class="home-section">
-    <nav>
-    <div class="sidebar-button">
-            <i class='bx bx-menu sidebarBtn'></i>
-            <span class="dashboard">Returns</span>
-        </div>
-        <div class="search-box">
-            <input type="text" placeholder="Search...">
-            <i class='bx bx-search' ></i>
-        </div>
-        <div class="profile-details">
-            <img src="../img/raaz_dura.jpg" alt="">
-            <span class="admin_name">Raaz Dura</span>
-            <i class='bx bx-chevron-down' ></i>
-        </div>
-    </nav>
     <div class="home-content">
       <div class="table-container">
       <div class="new-container">
@@ -62,12 +46,14 @@
               die("Connection failed: " . $conn->connect_error);
             }
             else {
-              $sql = "SELECT r.date_return, r.student_id, s.firstname, s.lastname, b.isbn, b.title 
+              $sql = "SELECT r.date_return, r.student_id, s.firstname, s.lastname, ib.isbn, b.title 
               FROM students as s
               INNER JOIN returns as r
               ON r.student_id = s.id 
               INNER JOIN books as b
-              ON r.book_id = b.id";
+              ON r.book_id = b.id
+              INNER JOIN indi_books as ib
+              ON b.id = ib.id";
               $result = $conn->query($sql);
               if ($result->num_rows > 0) {
                 // output data of each row
@@ -104,6 +90,7 @@
 </section>
 
 <script>
+    document.getElementById('pannel-title').innerHTML = "Returns";
   document.getElementById('returns').className= 'active';
   document.getElementById('dashboard').className= '';
 

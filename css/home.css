@@ -1,0 +1,13 @@
+.bg-img-books {
+    position: relative;
+    background-image: url("img/lib-img.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+}
+
+.hello {
+    background-image: url("img/lib-img.jpg");
+}
