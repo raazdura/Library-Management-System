@@ -7,7 +7,7 @@
     <div class="home-content">
       <div class="table-container">
       <div class="new-container">
-      <button onclick="openForm()" class="new">+ Issue</button>
+      <button onclick="openForm()" class="new">+ Return</button>
       <div id="myForm" class="form-popup">
       <form action="../backend/add_return.php" class="form-container" method="POST">
           <div style="border-bottom: 0.5px solid #D3D3D3; margin-bottom: 10px; padding: 10px;">

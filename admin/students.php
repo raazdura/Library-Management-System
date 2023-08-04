@@ -94,7 +94,7 @@
                       ?>
                     <tr>
                       <td><?php echo $row["code"] ?></td>
-                      <td><img src="../img/<?php echo $row["photo"] ?>" alt="photo of student" style="height: 40px; width: 20px;"></td>
+                      <td><img src="../img/<?php echo $row["photo"] ?>" alt="photo of student" style="height: 50px; width: 40px; margin: auto;"></td>
                       <td><?php echo $row["id"] ?></td>
                       <td><?php echo $row["firstname"] ?></td>
                       <td><?php echo $row["lastname"] ?></td>

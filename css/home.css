@@ -11,3 +11,12 @@
 .hello {
     background-image: url("img/lib-img.jpg");
 }
+
+.sort {
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+}
+.sort span {
+    margin: 5px 10px;
+}

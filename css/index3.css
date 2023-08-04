@@ -8,7 +8,7 @@ font-family: 'Poppins', sans-serif;
 header {
     background-color: #f5f5f5;
 }
-.navbar{
+/* .navbar{
 margin: auto;
 max-width: 80%;
 display: flex;
@@ -59,7 +59,7 @@ align-items: center;
     border-radius: 5px;
     padding: 5px 10px;
     cursor: pointer;
-}
+} */
 .bg-img {
     position: relative;
     background-image: url("../img/lib-img.jpg");
@@ -77,7 +77,6 @@ align-items: center;
 }
 .bg-img .search-container {
     width: 600px;
-    /* background-color: rgb(0, 71, 171, 0.6); */
     margin: auto;
     padding: 10px 30px;
     border-radius: 10px;

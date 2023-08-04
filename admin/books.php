@@ -57,7 +57,7 @@
               
             </div>
             <div id="isbn-container" class="grid-container">
-                
+              
             </div>
             <div style="border-top: 0.5px solid #D3D3D3;">
               <button type="submit" class="btn save"><i class="fa-regular fa-floppy-disk"></i>Save</button>
@@ -133,7 +133,6 @@
             }
             
             $total_page =  floor($result->num_rows / 5) + 1;
-            echo $total_page;
 
             if ($result->num_rows > 0) {
               // output data of each row

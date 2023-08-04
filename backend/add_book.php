@@ -27,7 +27,7 @@
                 $sql1 = "INSERT INTO indi_books (id, isbn) VALUES ('$last_id', '$isbn')";
                 if (mysqli_query($conn,$sql1)) {
                     echo "Data inserted successfully";
-                    header("location: ../admin/books.php");
+                    header("location: ../admin/books.php?page=1");
                 }
             }
         }

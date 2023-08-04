@@ -182,13 +182,16 @@
         <h1 style="width: 80%; margin: auto; color: white; font-size: 50px; padding-left: 10px;">Books</h1>
     </div>
     <!-- <div class="hello"><img src="img/lib-img.jpg" alt=""><h1>hello</h1></div> -->
-    <div class="sort" style="font-size: 1.6rem;">
-        <span style="font-weight: 500;">Sort By</span>
-        <span>Publish Date</span>
-        <span>Author A - Z</span>
-        <span>Author Z - A</span>
-    </div>
+    
     <div class="menu" id="menu">
+        <div class="sort" style="font-size: 1.6rem; 
+            margin: auto;
+            padding: 10px;">
+            <span style="font-weight: 500; margin: 5px 10px;">Sort By</span>
+            <span style="font-weight: 500; margin: 5px 10px;">Publish Date</span>
+            <span style="font-weight: 500; margin: 5px 10px;">Author A - Z</span>
+            <span style="font-weight: 500; margin: 5px 10px;">Author Z - A</span>
+        </div>
 
         <div style="text-align: center; margin: 0 0 0 20px  ; padding: 10px; border-radius: 5px;">
             <h1 class="heading" style="font-size: 2rem;">Books in the library</h1>
