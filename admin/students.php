@@ -15,9 +15,14 @@
           </div>
           <div class="grid-container">
             <label for="firstname" class="grid-item">Firstname</label>
-            <input type="text" placeholder="" name="firstname"class="grid-item" required>
+            <input type="text" placeholder="" name="firstname"class="grid-item" required> 
+
             <label for="lastname" class="grid-item">Lastname</label>
             <input type="text" placeholder="" name="lastname" class="grid-item" required>
+
+            <label for="email" class="grid-item">Email</label>
+            <input type="text" placeholder="" name="email" class="grid-item" required>
+
             <label for="course" class="grid-item">Course</label>
             <select name="course" class="grid-item" id="">
               <option value="-Select-">-Select-</option>
@@ -53,10 +58,10 @@
         </form>
       </div>
       </div>
-      <div class="search-container">
-        <form action="" class="search-bar">
+      <div class="search-container" method="POST">
+        <form action="students.php?page=1" class="search-bar">
             <label for="search-bar">Search:</label>
-            <input type="text" id="search-bar" placeholder="Search...">
+            <input type="text" id="search-bar" name="search" placeholder="Search...">
             <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
       </div>
@@ -71,8 +76,19 @@
           </tr>
           <tr>
             <?php
-              if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+
+              $page = $_GET['page'];
+              $i = 0;
+              $r = 0;
+
+              if(isset($_POST["search"])) {
+                $search = $_POST['search'];
+                $sql = "SELECT s.id, s.firstname, s.lastname, s.photo, s.course_id, c.code
+                FROM students as s
+                INNER JOIN course as c
+                ON s.course_id = c.id
+                WHERE s.firstname LIKE '$search%'";
+                $result = $conn->query($sql);
               }
               else {
                 $sql = "SELECT s.id, s.firstname, s.lastname, s.photo, s.course_id, c.code
@@ -80,10 +96,18 @@
                 INNER JOIN course as c
                 ON s.course_id = c.id";
                 $result = $conn->query($sql);
-                echo $result->num_rows;
+              }
+              $total_page =  floor($result->num_rows / 5) + 1;
+                
                 if ($result->num_rows > 0) {
+                  if ($page > 1) {
+                    $r = $r + $page * 10 - 10;
+                    mysqli_data_seek($result, $r);
+                  }
                   // output data of each row
-                  while($row = $result->fetch_assoc()) {
+                  while($i < 10 && $row = $result->fetch_assoc()) {
+                    $i = $i + 1;
+
                     $ccode = $row["code"];
                     $photo = $row["photo"];
                     $sid = $row["id"];
@@ -169,17 +193,30 @@
                 else {
                   echo "0 results";
                 }
-              }
+              
             ?>
           </tr>
         </table>
         <div class="pagination">
-        <p>Showing 1 to 5 out of 5</p>
-        <ul>
-            <li><span>Previous</span></li>
-            <li><Span>1</Span></li>
-            <li><span>Next</span></li>
-        </ul>
+          <p>Showing <?php echo $r + 1; ?> to <?php echo $r + $i; ?> out of <?php echo $result->num_rows ?></p>
+          <ul>
+            <?php if ($page > 1) { ?>
+              <li>
+                    <a href="books.php?page=<?php echo $page - 1 ?>">
+                      <span>Previous</span>
+                    </a>
+              </li>
+              
+            <?php } ?>
+            <li class="page-number"><Span><?php echo $page ?></Span></li>
+            <?php if ($page < $total_page) { ?>
+            <li>
+                <a href="books.php?page=<?php echo $page + 1 ?>">
+                  <span>Next</span>
+                </a>
+            </li>
+            <?php } ?>
+          </ul>
         </div>
       </div>
     </div>

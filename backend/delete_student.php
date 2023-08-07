@@ -14,7 +14,7 @@
         if(mysqli_query($conn,$sql))
         {
             echo "Data deleted successfully successfully";
-            header("location: ../admin/students.php");
+            header("location: ../admin/students.php?page=1");
         }
 
         else

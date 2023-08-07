@@ -16,7 +16,7 @@
         if(mysqli_query($conn,$sql))
         {
             echo "Data inserted successfully";
-            header("location: ../admin/return.php");
+            header("location: ../admin/return.php?page=1");
         }
 
         else

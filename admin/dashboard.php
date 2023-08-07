@@ -30,8 +30,18 @@
             <div class="box-topic">Total Books</div>
             <div class="number"><?php echo $result2->num_rows ?></div>
             <div class="indicator">
-              <i class="fa-solid fa-arrow-right"></i>
-              <span class="text">See more</span>
+              <a href="books.php?page=1" style="text-decoration: none;">
+                <span class="text">See more</span>
+                <i class="fa-solid fa-arrow-right" style="height: 20px;
+  width: 20px;
+  background: #fff;
+  line-height: 33px;
+  text-align: center;
+  border-radius: 50%;
+  color: #000;
+  font-size: 15px;
+  margin-right: 5px;"></i>
+                </a>
             </div>
           </div>
           <i class="fa-solid fa-book"></i>
@@ -41,8 +51,18 @@
             <div class="box-topic">Total Issues</div>
             <div class="number"><?php echo $result3->num_rows ?></div>
             <div class="indicator">
-              <i class="fa-solid fa-arrow-right"></i>
-              <span class="text">See more</span>
+            <a href="issue.php?page=1" style="text-decoration: none;">
+                <span class="text">See more</span>
+                <i class="fa-solid fa-arrow-right" style="height: 20px;
+  width: 20px;
+  background: #fff;
+  line-height: 33px;
+  text-align: center;
+  border-radius: 50%;
+  color: #000;
+  font-size: 15px;
+  margin-right: 5px;"></i>
+                </a>
             </div>
           </div>
           <i class="fa-solid fa-cart-plus"></i>
@@ -52,8 +72,18 @@
             <div class="box-topic">Total Returns</div>
             <div class="number"><?php echo $result5->num_rows ?></div>
             <div class="indicator">
-              <i class="fa-solid fa-arrow-right"></i>
-              <span class="text">See more</span>
+            <a href="returns.php?page=1" style="text-decoration: none;">
+                <span class="text">See more</span>
+                <i class="fa-solid fa-arrow-right" style="height: 20px;
+  width: 20px;
+  background: #fff;
+  line-height: 33px;
+  text-align: center;
+  border-radius: 50%;
+  color: #000;
+  font-size: 15px;
+  margin-right: 5px;"></i>
+                </a>
             </div>
           </div>
           <i class="fa-solid fa-rotate-left"></i>
@@ -63,8 +93,18 @@
             <div class="box-topic">Total Students</div>
             <div class="number"><?php echo $result4->num_rows ?></div>
             <div class="indicator">
-              <i class="fa-solid fa-arrow-right"></i>
-              <span class="text">See more</span>
+            <a href="students.php?page=1" style="text-decoration: none;">
+                <span class="text">See more</span>
+                <i class="fa-solid fa-arrow-right" style="height: 20px;
+  width: 20px;
+  background: #fff;
+  line-height: 33px;
+  text-align: center;
+  border-radius: 50%;
+  color: #000;
+  font-size: 15px;
+  margin-right: 5px;"></i>
+                </a>
             </div>
           </div>
           <i class="fa-solid fa-people-group"></i>
@@ -73,19 +113,7 @@
     </div>
   </section>
 
-  <script>
-   let sidebar = document.querySelector(".sidebar");
-    let sidebarBtn = document.querySelector(".sidebarBtn");
-    sidebarBtn.onclick = function() {
-      sidebar.classList.toggle("active");
-      if(sidebar.classList.contains("active")){
-      sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-      }
-      else {
-      sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-      }
-    }
- </script>
+  
 
 <script>
   let dropDown = document.getElementById("drop-down");

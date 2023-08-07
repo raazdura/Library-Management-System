@@ -15,7 +15,7 @@
         if(mysqli_query($conn,$sql))
         {
             echo "Data inserted successfully";
-            header("location: ../admin/course.php");
+            header("location: ../admin/course.php?page=1");
         }
 
         else

@@ -173,7 +173,7 @@
         height: 200px;
         display: flex;
         align-items: center;
-}
+        }
     </style>
 </head>
 <body>
@@ -199,7 +199,7 @@
 
         <div class="box-container">
             <?php 
-            $sql = "SELECT b.id, b.title, b.author, b.publisher, b.status, b.publish_date,
+            $sql = "SELECT b.id, b.title, b.photo, b.author, b.publisher, b.status, b.publish_date,
                 c.name, b.category_id, co.code as course_title
             FROM course as co
             INNER JOIN books as b
@@ -209,7 +209,7 @@
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 // output data of each row
-                
+                echo $result->num_rows;
                 $i = 0;
                 while($i <= 10 && $row = $result->fetch_assoc()) {
                     ?>
@@ -223,7 +223,7 @@
                             }
                             ?>
                         <div class="image">
-                            <img src="img/monker_d_luffy.jpg" alt="">
+                            <img src="img/<?php echo $row['photo']; ?>" alt="imgge of the book">
                         </div>
                         <div class="content">
                         

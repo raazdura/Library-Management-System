@@ -42,8 +42,23 @@
             <th>Title</th>
           </tr>
           <?php
-            if ($conn->connect_error) {
-              die("Connection failed: " . $conn->connect_error);
+
+            $page = $_GET['page'];
+            $i = 0;
+            $r = 0;
+
+            if(isset($_POST["search"])) {
+              $search = $_POST['search'];
+              $sql = "SELECT r.date_return, r.student_id, s.firstname, s.lastname, ib.isbn, b.title 
+              FROM students as s
+              INNER JOIN returns as r
+              ON r.student_id = s.id 
+              INNER JOIN books as b
+              ON r.book_id = b.id
+              INNER JOIN indi_books as ib
+              ON b.id = ib.id
+              WHERE title LIKE '$search%'";
+              $result = $conn->query($sql);
             }
             else {
               $sql = "SELECT r.date_return, r.student_id, s.firstname, s.lastname, ib.isbn, b.title 
@@ -55,9 +70,18 @@
               INNER JOIN indi_books as ib
               ON b.id = ib.id";
               $result = $conn->query($sql);
+            }
+            
+            $total_page =  floor($result->num_rows / 5) + 1;
+
               if ($result->num_rows > 0) {
                 // output data of each row
-                while($row = $result->fetch_assoc()) {
+                if ($page > 1) {
+                  $r = $r + $page * 10 - 10;
+                  mysqli_data_seek($result, $r);
+                }
+                while($i < 10 && $row = $result->fetch_assoc()) {
+                  $i = $i + 1;
           ?>
                   <tr>
                     <td><?php echo $row["date_return"] ?></td>
@@ -73,17 +97,30 @@
                 echo "0 results";
               }
               $conn->close();
-            }
+            
           ?>
           </tr>
         </table>
         <div class="pagination">
-        <p>Showing 1 to 5 out of 5</p>
-        <ul>
-            <li><span>Previous</span></li>
-            <li><Span>1</Span></li>
-            <li><span>Next</span></li>
-        </ul>
+          <p>Showing <?php echo $r; ?> to <?php echo $r + $i; ?> out of <?php echo $result->num_rows ?></p>
+          <ul>
+            <?php if ($page > 1) { ?>
+              <li>
+                    <a href="returns.php?page==<?php echo $page - 1 ?>">
+                      <span>Previous</span>
+                    </a>
+              </li>
+              <li class="page-number"><Span><?php echo $page ?></Span></li>
+            <?php } ?>
+            
+            <?php if ($page < $total_page) { ?>
+            <li>
+                <a href="returns.php?page==<?php echo $page + 1 ?>">
+                  <span>Next</span>
+                </a>
+            </li>
+            <?php } ?>
+          </ul>
         </div>
       </div>
     </div>

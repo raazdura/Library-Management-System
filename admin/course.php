@@ -100,14 +100,14 @@
                 }
             ?>
         </table>
-        <div class="pagination">
+        <!-- <div class="pagination">
         <p>Showing 1 to 5 out of 5</p>
         <ul>
             <li><span>Previous</span></li>
             <li><Span>1</Span></li>
             <li><span>Next</span></li>
         </ul>
-        </div>
+        </div> -->
       </div>
     </div>
 </section>

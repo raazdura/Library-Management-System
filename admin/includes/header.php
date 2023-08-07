@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="css/issue.css">
     <link rel="stylesheet" href="css/students.css">
 
+    
+
 
    </head>
 <body>
@@ -40,19 +42,19 @@
           </a>
         </li>
         <li>
-          <a href="issue.php" id="issue">
+          <a href="issue.php?page=1" id="issue">
             <i class='bx bx-list-ul' ></i>
             <span class="links_name">Issue</span>
           </a>
         </li>
         <li>
-          <a href="returns.php" id="returns">
+          <a href="returns.php?page=1" id="returns">
             <i class="fa-solid fa-rotate-left"></i>
             <span class="links_name">Returns</span>
           </a>
         </li>
         <li>
-          <a href="students.php" id="students">
+          <a href="students.php?page=1" id="students">
             <i class='bx bxs-group'></i>
             <span class="links_name">Students</span>
           </a>
@@ -116,3 +118,25 @@
         </div>
       </div>
     </nav>
+
+    <script>
+   let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = function() {
+      sidebar.classList.toggle("active");
+      if(sidebar.classList.contains("active")){
+      sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+      }
+      else {
+      sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      }
+    }
+ </script>
+
+<script>
+  let dropDown = document.getElementById("drop-down");
+
+  function showDropdown() {
+      dropDown.classList.toggle("open-dropdown");
+  }
+</script>

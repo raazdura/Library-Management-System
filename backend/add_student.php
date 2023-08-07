@@ -8,6 +8,7 @@
 
         $firstname = $_POST['firstname']; echo $firstname;
         $lastname = $_POST['lastname'];
+        $email = $_POST['email'];
         $course = intval($_POST['course']);
 
         $target_dir = "../img/";
@@ -37,11 +38,11 @@
         $photo =  $_FILES["photo"]["name"];
         $date = date("Y-m-d");
          
-        $sql = "INSERT INTO students (firstname, lastname, photo, course_id, created_on)
-        VALUES('$firstname', '$lastname', '$photo', '$course', '$date')";
+        $sql = "INSERT INTO students (firstname, lastname, email, photo, course_id, created_on)
+        VALUES('$firstname', '$lastname', '$email', '$photo', '$course', '$date')";
          if (mysqli_query($conn, $sql)) {
             echo "New record has been added successfully !";
-            header("location: ../admin/students.php");
+            header("location: ../admin/books.php?page=1");
          } else {
             echo "Error: " . $sql . ":-" . mysqli_error($conn);
          }

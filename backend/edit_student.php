@@ -60,7 +60,7 @@
 
             if (mysqli_query($conn, $sql)) {
                 echo "New record has been added successfully !";
-                header("location: ../admin/students.php");
+                header("location: ../admin/students.php?page=1");
             } else {
                 echo "Error: " . $sql . ":-" . mysqli_error($conn);
             }

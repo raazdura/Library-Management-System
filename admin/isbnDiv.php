@@ -31,9 +31,9 @@
   
    $name = intval($_POST['quantity']);
 
-    for ( $i = 0; $i < $name; $i++ ) {
+    for ( $i = 1; $i <= $name; $i++ ) {
       $data =  "<label for='isbn' class='grid-item'><b>ISBN No.</b></label>
-      <input type='text' class='grid-item' id='getQuantity' placeholder='Enter your ISBN No.' name='isbn' required>";
+      <input type='text' class='grid-item' id='getQuantity' placeholder='Enter your ISBN No.' name='". $i . "isbn' required>";
             // $data = "<p>" . $row['title']. "</p>";
             echo $data;
     }

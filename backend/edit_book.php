@@ -24,7 +24,7 @@
         if(mysqli_query($conn,$sql))
         {
             echo "Data inserted successfully";
-            header("location: ../admin/books.php");
+            header("location: ../admin/books.php?page=1");
         }
 
         else

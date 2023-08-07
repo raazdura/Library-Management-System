@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2023 at 02:11 AM
+-- Generation Time: Aug 07, 2023 at 05:06 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -55,12 +55,20 @@ CREATE TABLE `books` (
   `category_id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
   `title` text NOT NULL,
+  `Photo` varchar(50) NOT NULL,
   `author` varchar(150) NOT NULL,
   `quantity` int(100) NOT NULL,
   `publisher` varchar(150) NOT NULL,
   `publish_date` date NOT NULL,
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`id`, `category_id`, `course_id`, `title`, `Photo`, `author`, `quantity`, `publisher`, `publish_date`, `status`) VALUES
+(1, 6, 1, 'My Comic', 'comicbook.jpg', 'Raaz Dura', 2, 'Raaz Publication', '2023-08-06', 0);
 
 -- --------------------------------------------------------
 
@@ -72,6 +80,18 @@ CREATE TABLE `category` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `name`) VALUES
+(1, 'Engineering'),
+(2, 'Mathematics'),
+(3, 'Science and Technology'),
+(4, 'History'),
+(5, 'IT Programming'),
+(6, 'Comic');
 
 -- --------------------------------------------------------
 
@@ -85,6 +105,16 @@ CREATE TABLE `course` (
   `code` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`id`, `title`, `code`) VALUES
+(1, 'Bachelor of Computer Application', 'BCA'),
+(2, 'Bachelor of Science in Computer Science and Information Technology', 'CSIT'),
+(3, 'Bachelor in Information Management', 'BIM'),
+(4, 'Bachelor of Hotel Management', 'BHM');
+
 -- --------------------------------------------------------
 
 --
@@ -95,6 +125,28 @@ CREATE TABLE `indi_books` (
   `id` int(11) NOT NULL,
   `isbn` int(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `indi_books`
+--
+
+INSERT INTO `indi_books` (`id`, `isbn`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(7, 6),
+(7, 7),
+(8, 8),
+(8, 9),
+(9, 10),
+(9, 11),
+(18, 234),
+(18, 324),
+(1, 1234),
+(1, 1235),
+(19, 4235);
 
 -- --------------------------------------------------------
 
@@ -136,9 +188,18 @@ CREATE TABLE `students` (
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `photo` varchar(200) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `course_id` int(11) NOT NULL,
   `created_on` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `user_id`, `firstname`, `lastname`, `photo`, `email`, `course_id`, `created_on`) VALUES
+(1, 0, 'Raaz', 'Dura', 'user.png', '', 1, '2023-08-06'),
+(2, 0, 'Raaz', 'Dura', 'IMG_9525.jpg', 'radu_bca2077@lict.edu.np', 1, '2023-08-06');
 
 -- --------------------------------------------------------
 
@@ -215,25 +276,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `indi_books`
 --
 ALTER TABLE `indi_books`
-  MODIFY `isbn` int(13) NOT NULL AUTO_INCREMENT;
+  MODIFY `isbn` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4236;
 
 --
 -- AUTO_INCREMENT for table `issue`
@@ -251,7 +312,7 @@ ALTER TABLE `returns`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`

@@ -10,7 +10,7 @@
       <div class="new-container">
       <button onclick="openForm()" class="new">+ New</button>
       <div id="myForm" class="form-popup">
-          <form action="../backend/add_book.php" class="form-container" method="POST">
+          <form action="../backend/add_book.php"class="form-container"  method="POST" enctype="multipart/form-data" accept="image/png, image/jpeg">
             <div style="border-bottom: 0.5px solid #D3D3D3; margin-bottom: 10px; padding: 10px;">
               <h2>Add Book <button type="button" onclick="closeForm()">X</button></h2>
             </div>
@@ -43,6 +43,31 @@
                 ?>
               </select>
 
+              <label for="course" class="grid-item"><b>Course</b></label>
+              <select name="course" class="grid-item" id="course">
+                <?php
+                  if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                  }
+                  else {
+                    $sql = "SELECT * 
+                    FROM course";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                      // output data of each row
+                      while($row = $result->fetch_assoc()) {
+                ?>
+                        <option value="<?php echo $row["id"] ?>"><?php echo $row["code"] ?></option>
+                <?php
+                      }
+                    } 
+                    else {
+                      echo "0 results";
+                    }
+                  }
+                ?>
+              </select>
+
               <label for="author" class="grid-item"><b>Author</b></label>
               <input type="text" class="grid-item" placeholder="Enter author of the book" name="author" required>
 
@@ -52,9 +77,13 @@
               <label for="publish_date" class="grid-item"><b>Publish Date</b></label>
               <input type="text" class="grid-item" placeholder="Enter publish date" name="publish_date" required> 
               
+              <label for="photo" class="grid-item">Photo</label>
+              <input type="file" class="grid-item photo" name="photo"> 
+              
               <label for="quantity" class="grid-item"><b>Quantity</b></label>
               <input type="text" class="grid-item" id="getQuantity" placeholder="Enter your quantity" name="quantity" required>
               
+
             </div>
             <div id="isbn-container" class="grid-container">
               
@@ -104,6 +133,7 @@
           <tr>
             <th>ID</th>
             <th>Category</th>
+            <th>Photo</th>
             <th>Title</th>
             <th>Auther</th>
             <th>Publisher</th>
@@ -114,10 +144,12 @@
           <?php
 
             $page = $_GET['page'];
+            $i = 0;
+            $r = 0;
             
             if(isset($_POST["search"])) {
               $search = $_POST['search'];
-              $sql = "SELECT b.id, b.title, b.author, b.publisher, b.quantity, b.status, b.publish_date, c.name, b.category_id
+              $sql = "SELECT b.id, b.title, b.photo, b.author, b.publisher, b.quantity, b.status, b.publish_date, c.name, b.category_id
               FROM books as b
               INNER JOIN category as c
               ON b.category_id = c.id
@@ -125,7 +157,7 @@
               $result = $conn->query($sql);
             }
             else {
-              $sql = "SELECT b.id, b.title, b.author, b.publisher, b.quantity, b.status, b.publish_date, c.name, b.category_id
+              $sql = "SELECT b.id, b.title, b.photo, b.author, b.publisher, b.quantity, b.status, b.publish_date, c.name, b.category_id
               FROM books as b
               INNER JOIN category as c
               ON b.category_id = c.id";
@@ -136,8 +168,7 @@
 
             if ($result->num_rows > 0) {
               // output data of each row
-              $i = 0;
-              $r = 0;
+              
               if ($page > 1) {
                 $r = $r + $page * 10 - 10;
                 mysqli_data_seek($result, $r);
@@ -148,6 +179,8 @@
                   <tr>
                     <td><?php echo $row["id"] ?></td>
                     <td><?php echo $row["name"] ?></td>
+                    <td><img src="../img/<?php echo $row["photo"] ?>" alt="Photo of the book" style="object-fit: contain; height: 100px;
+                    width: 90px;"></td>
                     <td><?php echo $row["title"] ?></td>
                     <td><?php echo $row["author"] ?></td>
                     <td><?php echo $row["publisher"] ?></td>
@@ -245,8 +278,8 @@
           </tr>
         </table>
         <div class="pagination">
-        <p>Showing <?php echo $r + 1; ?> to <?php echo $r + $i; ?> out of <?php echo $result->num_rows ?></p>
-        <ul>
+          <p>Showing <?php echo $r + 1; ?> to <?php echo $r + $i; ?> out of <?php echo $result->num_rows ?></p>
+          <ul>
             <?php if ($page > 1) { ?>
               <li>
                     <a href="books.php?page=<?php echo $page - 1 ?>">
@@ -262,7 +295,7 @@
                 </a>
             </li>
             <?php } ?>
-        </ul>
+          </ul>
         </div>
       </div>
     </div>
