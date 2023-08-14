@@ -10,7 +10,7 @@
         while($row = $query->fetch_assoc())
         {
            $data =  "<div class='search-list'>
-              <div class='book-img'><img src='img/monker_d_luffy.jpg' alt=''></div>
+              <div class='book-img'><img src='img/" . $row['Photo'] . "' alt=''></div>
                   <div class='book-details'>
                       <p><b>". " " . $row['title'] . "</b></p>
                       <p>by" ." " . $row['author'] . "</p>

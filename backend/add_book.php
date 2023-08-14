@@ -56,7 +56,7 @@
             for ( $i = 1; $i <= $quantity; $i++) {
                 $a = $i . 'isbn';
                 $isbn = $_POST[$a];
-                $sql1 = "INSERT INTO indi_books (id, isbn) VALUES ('$last_id', '$isbn')";
+                $sql1 = "INSERT INTO indi_books (id, isbn, status) VALUES ('$last_id', '$isbn', 1)";
                 if (mysqli_query($conn,$sql1)) {
                     echo "Data inserted successfully";
                     header("location: ../admin/books.php?page=1");

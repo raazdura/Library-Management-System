@@ -16,9 +16,14 @@
           <div class="grid-container">
             <label for="sid" class="grid-item">Student ID</label>
             <input type="text" placeholder="" name="sid"class="grid-item" required>
-            <label for="isbn" class="grid-item">ISBN</label>
-            <input type="text" placeholder="" name="isbn" class="grid-item" required>  
-          </div>
+
+            <label for="quantity" class="grid-item"><b>Quantity</b></label>
+            <input type="text" class="grid-item" id="getQuantity" placeholder="Enter quantity" name="quantity" required>
+              
+              
+            </div>
+            <div id="isbn-container" class="grid-container">  
+            </div>
           <div style="border-top: 0.5px solid #D3D3D3;">
             <button type="submit" class="btn save"><i class="fa-regular fa-floppy-disk"></i>Save</button>
             <button type="button" class="btn cancel" onclick="closeForm()"><i class="fa-solid fa-xmark"></i>Close</button>
@@ -139,5 +144,22 @@ function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
   </script>
+
+<script>
+  $(document).ready(function(){
+   $('#getQuantity').on("keyup", function(){
+     var getName = $(this).val();
+     $.ajax({
+       method:'POST',
+       url:'isbnDiv.php',
+       data:{quantity:getName},
+       success:function(response)
+       {
+            $("#isbn-container").html(response);
+       } 
+     });
+   });
+  });
+</script>
 </body>
 </html>

@@ -44,7 +44,7 @@
           var getName = $(this).val();
           $.ajax({
             method:'POST',
-            url:'isbnDuplicate.php',
+            url:'duplicateISBN.php',
             data:{isbn:getName},
             success:function(response)
             {

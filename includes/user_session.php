@@ -9,6 +9,7 @@
 	 }
     else {
       $user_id = $_SESSION['userid'];
+      $user_password = $_SESSION["password"];
 
       $sql1 = "SELECT * FROM user WHERE uid = '$user_id'";
       $result1 = mysqli_query($conn,$sql1);

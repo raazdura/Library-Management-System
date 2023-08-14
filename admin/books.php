@@ -344,7 +344,7 @@
      var getName = $(this).val();
      $.ajax({
        method:'POST',
-       url:'isbnDiv.php',
+       url:'bookISBNdiv.php',
        data:{quantity:getName},
        success:function(response)
        {
@@ -354,5 +354,22 @@
    });
   });
 </script>
+
+<!-- <script>
+  $(document).ready(function(){
+   $('#getQuantity').on("keyup", function(){
+     var getName = $(this).val();
+     $.ajax({
+       method:'POST',
+       url:'duplicateISBN.php',
+       data:{quantity:getName},
+       success:function(response)
+       {
+            $("#duplicate-isbn").html(response);
+       } 
+     });
+   });
+  });
+</script> -->
 </body>
 </html>

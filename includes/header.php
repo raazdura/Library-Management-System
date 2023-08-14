@@ -23,7 +23,6 @@
                 <li><a href="index.php" id="home" style="font-size: 1.6rem;">Home</a></li>
                 <li><a href="home.php" id="books" class="active" style="font-size: 1.6rem;">Books</a></li>
                 <li><a href="about.php" id="about" style="font-size: 1.6rem;">About</a></li>
-                <li><a href="mybooks.php" id="myBooks" style="font-size: 1.6rem;">My Books</a></li>
                 <?php
                 if ( !isset($_SESSION['userloggedin']) ) {
                 ?>
@@ -32,8 +31,30 @@
                 }
                 else {
                 ?>
+                    <a href="requestbooks.php">
+                        <i class='bx bxs-cart-alt' style="margin: 10px; font-size: 3rem; color: #5C1C97; position: relative;">
+                            <?php
+                            if(isset($_SESSION["cart_item"])) {
+                            ?>
+                            <span style="
+                                position: absolute;
+                                top: -9px;
+                                font-size: 16px;
+                                background: red;
+                                color: white;
+                                border-radius: 50%;
+                                width: 15px;
+                                height: 15px;
+                                text-align: center;
+                                right: 6px;
+                            "><?php echo count($_SESSION["cart_item"]); ?></span>
+                            <?php
+                            }
+                            ?>
+                        </i>
+                    </a>
                     <img src="img/<?php echo $user_photo ?>" alt="" onclick="showDropdown();" style="cursor: pointer;">
-                    <i class='bx bx-chevron-up' onclick="showDropdown();" id="angle-up" style="display: none;"></i> -->
+                    <i class='bx bx-chevron-up' onclick="showDropdown();" id="angle-up" style="display: none;"></i>
                 <?php
                 }
                 ?>

@@ -17,7 +17,7 @@
         $newNconfirmErr = "*Confirm passowrd is not same as new password";
       }
       else {
-        $sql = "UPDATE user SET password = md5('$new') WHERE uid = $user_id";
+        $sql = "UPDATE admin SET password = md5('$new') WHERE id = 1";
         if ( mysqli_query($conn, $sql) )  {
           echo "Passowrd Changed";
         }

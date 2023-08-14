@@ -23,6 +23,15 @@
 
    </head>
 <body>
+
+  <?php 
+    include '../includes/config.php';
+    $qry = "SELECT COUNT(rq_id) as totalRQ FROM requests WHERE status = 0";
+    $result10 = $conn->query($qry);
+    $row10 = $result10->fetch_assoc();
+    
+  ?>
+
   <div class="sidebar">
     <div class="logo-details">
       <i class='bx bx-book'></i>
@@ -42,8 +51,27 @@
           </a>
         </li>
         <li>
+          <a href="requests.php?page=1" id="requests">
+            <i class="fa-solid fa-list-check"></i>
+            <span class="links_name">Requests</span>
+          </a>
+          <span style="position: absolute;
+                      top: 15px;
+                      font-size: 14px;
+                      background: red;
+                      color: white;
+                      border-radius: 50%;
+                      width: 21px;
+                      height: 15px;
+                      text-align: center;
+                      right: 6px;
+                      padding-bottom: 21px;">
+            <?php echo $row10['totalRQ']; ?>
+          </span>
+        </li>
+        <li>
           <a href="issue.php?page=1" id="issue">
-            <i class='bx bx-list-ul' ></i>
+            <i class="fa-solid fa-list-ul"></i>
             <span class="links_name">Issue</span>
           </a>
         </li>
@@ -98,7 +126,7 @@
         <input type="text" placeholder="Search...">
         <i class='bx bx-search' ></i>
       </div> -->
-      <div class="profile-details"  onclick="showDropdown();">
+      <!-- <div class="profile-details"  onclick="showDropdown();">
         <img src="../img/raaz_dura.jpg" alt="">
         <span class="admin_name">Raaz Dura</span>
         <i class='bx bx-chevron-down' ></i>
@@ -116,7 +144,7 @@
               <li><i class="fa-solid fa-right-from-bracket"></i>Logout</li>
           </ul>
         </div>
-      </div>
+      </div> -->
     </nav>
 
     <script>

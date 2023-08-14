@@ -17,12 +17,8 @@
                 
             if($count == 1) {
                 $_SESSION["userloggedin"] = true;
-                // $_SESSION["email"] = $useremail;
-                // $_SESSION["password"] = $userpassword;
-                // $_SESSION['user'] = $user;
-                // $_SESSION['username'] = $row['username'];
+                $_SESSION["password"] = $userpassword;
                 $_SESSION['userid'] = $row['uid'];
-                // $_SESSION['photo'] = $row['photo'];
 
                 header("location: ../admin\dashboard.php");
             }else {
@@ -40,12 +36,8 @@
                 
             if($count == 1) {
                 $_SESSION["userloggedin"] = true;
-                // $_SESSION["email"] = $useremail;
-                // $_SESSION["password"] = $userpassword;
-                // $_SESSION['user'] = $user;
-                // $_SESSION['username'] = $row['username'];
+                $_SESSION["password"] = $userpassword;
                 $_SESSION['userid'] = $row['uid'];
-                // $_SESSION['photo'] = $row['photo'];
 
                 header("location: ../home.php");
             }else {
@@ -54,7 +46,8 @@
             }
         }
         if ($user == 3) {
-            $sql = "SELECT * FROM user WHERE email = '$useremail' and password = md5('$userpassword') AND role = '$user'";
+            $sql = "SELECT uid FROM user WHERE email = '$useremail' and password = md5('$userpassword') AND role = '$user'";
+
             $result = mysqli_query($conn,$sql);
             $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
             
@@ -64,13 +57,8 @@
                 
             if($count == 1) {
                 $_SESSION["userloggedin"] = true;
-                // $_SESSION["email"] = $useremail;
-                // $_SESSION["password"] = $userpassword;
-                // $_SESSION['user'] = $user;
-                // $_SESSION['username'] = $row['username'];
+                $_SESSION["password"] = $userpassword;
                 $_SESSION['userid'] = $row['uid'];
-                // $_SESSION['photo'] = $row['photo'];
-
                 header("location: ../home.php");
             }else {
                 $error = "Your Login Name or Password is invalid";

@@ -11,6 +11,8 @@
         $email = $_POST['email'];
         $course = intval($_POST['course']);
 
+        $uname = $firstname.$lastname;
+
         $target_dir = "../img/";
         $target_file = $target_dir . basename($_FILES["photo"]["name"]);
         $uploadOk = 1;
@@ -38,14 +40,19 @@
         $photo =  $_FILES["photo"]["name"];
         $date = date("Y-m-d");
          
-        $sql = "INSERT INTO students (firstname, lastname, email, photo, course_id, created_on)
-        VALUES('$firstname', '$lastname', '$email', '$photo', '$course', '$date')";
-         if (mysqli_query($conn, $sql)) {
-            echo "New record has been added successfully !";
-            header("location: ../admin/books.php?page=1");
-         } else {
-            echo "Error: " . $sql . ":-" . mysqli_error($conn);
-         }
-         mysqli_close($con);
+        $sql1 = "INSERT INTO user (username, email, photo, password, role)
+        VALUES('$uname', '$email', '$photo', md5('password'), 3)";
+
+        if (mysqli_query($conn, $sql1)) {
+            $sql = "INSERT INTO students (firstname, lastname, email, photo, course_id, created_on)
+            VALUES('$firstname', '$lastname', '$email', '$photo', '$course', '$date')";
+            if (mysqli_query($conn, $sql)) {
+                echo "New record has been added successfully !";
+                header("location: ../admin/students.php?page=1");
+            } else {
+                echo "Error: " . $sql . ":-" . mysqli_error($conn);
+            }
+            mysqli_close($con);
+        }
     }
 ?>

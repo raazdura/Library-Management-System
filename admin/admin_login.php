@@ -213,7 +213,7 @@
     </p>
   </form>
   <div id="create-account-wrap">
-    <p><a href="#">Forgot Password?</a><p>
+    <p><a href="forgotPasswordAdmin.php">Forgot Password?</a><p>
   </div><!--create-account-wrap-->
 </div><!--login-form-wrap-->
 <!-- partial -->

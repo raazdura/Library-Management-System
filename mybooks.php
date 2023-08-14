@@ -172,11 +172,11 @@
             $row2 = $result2->fetch_assoc();
             if ($result2->num_rows > 0){
                 ?>
-                <div class="user-img"><img src="img/monker_d_luffy.jpg" alt=""></div>
+                <div class="user-img"><img src="img/<?php echo $user_photo; ?>" alt=""></div>
                 <div class="user-details">
                     <p><b>Name:</b><?php echo " " . $row2['firstname'] . " " . $row2['lastname']; ?></p>
                     <p><b>Faculty:</b><?php echo " " . $row2['title'] . "(" . $row2['code'] . ")" ?></p>
-                    <p><b>Batch:</b></p>
+                    <!-- <p><b>Batch:</b></p> -->
                     <p><b>Student ID:</b><?php echo " " . $row2['id']; ?></p>
                 </div>
                 <?php
@@ -201,15 +201,13 @@
     <div class="box-container">
     
         <?php 
-        $sql = "SELECT i.date, i.status, ib.isbn, b.title
-                FROM students as s
-                INNER JOIN issue as i
-                ON s.id = i.student_id
+        $sql = "SELECT i.date, i.status, ib.isbn, b.title, b.photo
+                FROM issue as i
                 INNER JOIN indi_books as ib
                 ON i.isbn = ib.isbn
                 INNER JOIN books as b
                 ON ib.id = b.id
-                WHERE s.user_id = $user_id";
+                WHERE i.student_id = $user_id";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             // output data of each row
@@ -220,7 +218,7 @@
                 <div class="box">
                         
                     <div class="image">
-                        <img src="img/monker_d_luffy.jpg" alt="">
+                        <img src="img/<?php echo $row['photo']; ?>" alt="">
                     </div>
                     <div class="content" style="text-align: center; margin-top: 10px;">
                     
